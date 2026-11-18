@@ -1,0 +1,1386 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopZone - Online Shopping</title>
+
+    <style>
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #eaeded;
+    color: #222;
+}
+
+
+/* MAIN NAVBAR */
+
+.navbar {
+    background: #131921;
+    color: white;
+
+    display: grid;
+
+    grid-template-columns: 120px 100px 1fr 120px 100px 80px;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 25px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff9900;
+}
+
+.location small,
+.account small,
+.orders small {
+    color: #ddd;
+    font-size: 11px;
+}
+
+.search {
+    display: grid;
+    grid-template-columns: 60px 1fr 50px;
+    height: 42px;
+}
+
+.search select,
+.search input,
+.search button {
+    border: none;
+    padding: 10px;
+}
+
+.search input {
+    min-width: 0;
+    font-size: 15px;
+}
+
+.search button {
+    background: #febd69;
+    cursor: pointer;
+}
+
+.cart {
+    font-weight: bold;
+}
+
+
+/* SUB NAVBAR */
+
+.sub-navbar {
+    background: #232f3e;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    padding: 15px 25px;
+}
+
+.sub-navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 350px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.8),
+            rgba(0,0,0,0.1)
+        ),
+        url("https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1600")
+        center/cover;
+
+    display: grid;
+    align-items: center;
+
+    padding: 50px;
+    color: white;
+}
+
+.hero-content {
+    max-width: 550px;
+}
+
+.hero h1 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+button {
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.hero button {
+    background: #ff9900;
+    font-weight: bold;
+}
+
+
+/* COMMON SECTION */
+
+.section {
+    margin: 25px;
+    padding: 25px;
+    background: white;
+}
+
+.section h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+
+/* CATEGORY GRID */
+
+.category-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.category-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.category-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.category-card h3 {
+    margin: 15px 0;
+}
+
+.category-card a {
+    color: #007185;
+    text-decoration: none;
+}
+
+
+/* PRODUCT GRID */
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+}
+
+.rating {
+    color: #ff9900;
+    margin: 8px 0;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.product-card button {
+    background: #ffd814;
+    margin-top: 15px;
+    width: 100%;
+}
+
+
+/* OFFER BANNER */
+
+.offer-banner {
+    background: #232f3e;
+    color: white;
+
+    padding: 35px;
+
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    align-items: center;
+
+    margin: 25px;
+}
+
+.offer-banner button {
+    background: #ff9900;
+    font-weight: bold;
+}
+
+
+/* BACK TO TOP */
+
+.back-top {
+    display: block;
+    background: #37475a;
+    color: white;
+
+    text-align: center;
+
+    padding: 18px;
+
+    text-decoration: none;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #131a22;
+    color: white;
+}
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 30px;
+
+    padding: 50px;
+}
+
+.footer-grid h3 {
+    margin-bottom: 20px;
+}
+
+.footer-grid a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.footer-grid a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    border-top: 1px solid #555;
+
+    text-align: center;
+
+    padding: 30px;
+
+    line-height: 2;
+}
+
+.footer-bottom h2 {
+    color: #ff9900;
+}
+
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .search {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .category-grid,
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 0;
+    }
+
+    .navbar {
+        grid-template-columns: 1fr 1fr;
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .sub-navbar {
+        gap: 15px;
+        padding: 12px;
+    }
+
+    .sub-navbar a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 280px;
+        padding: 25px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .section {
+        margin: 12px;
+        padding: 15px;
+    }
+
+    .category-grid,
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .category-card img,
+    .product-card img {
+        height: 120px;
+    }
+
+    .offer-banner {
+        margin: 12px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        padding: 25px;
+        gap: 25px;
+    }
+
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- MAIN HEADER -->
+    <header class="navbar">
+
+        <div class="logo">
+            ShopZone
+        </div>
+
+        <div class="location">
+            <small>Deliver to</small>
+            <h4>India</h4>
+        </div>
+
+        <div class="search">
+            <select>
+                <option>All</option>
+                <option>Electronics</option>
+                <option>Fashion</option>
+                <option>Home</option>
+            </select>
+
+            <input type="text" placeholder="Search ShopZone">
+
+            <button>🔍</button>
+        </div>
+
+        <div class="account">
+            <small>Hello, Sign in</small>
+            <h4>Account</h4>
+        </div>
+
+        <div class="orders">
+            <small>Returns</small>
+            <h4>& Orders</h4>
+        </div>
+
+        <div class="cart">
+            🛒 Cart
+        </div>
+
+    </header>
+
+
+    <!-- CATEGORY NAVBAR -->
+    <nav class="sub-navbar">
+
+        <a href="#">☰ All</a>
+        <a href="#">Today's Deals</a>
+        <a href="#">Mobiles</a>
+        <a href="#">Electronics</a>
+        <a href="#">Fashion</a>
+        <a href="#">Home & Kitchen</a>
+        <a href="#">Books</a>
+        <a href="#">Customer Service</a>
+
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-content">
+            <h1>Big Shopping Festival</h1>
+
+            <p>Discover amazing deals on your favourite products.</p>
+
+            <button>Shop Now</button>
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORY SECTION -->
+    <section class="section">
+
+        <h2>Shop By Category</h2>
+
+        <div class="category-grid">
+
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500" alt="Electronics">
+                <h3>Electronics</h3>
+                <a href="#">Explore Now</a>
+            </div>
+
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500" alt="Fashion">
+                <h3>Fashion</h3>
+                <a href="#">Explore Now</a>
+            </div>
+
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500" alt="Home">
+                <h3>Home & Furniture</h3>
+                <a href="#">Explore Now</a>
+            </div>
+
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500" alt="Books">
+                <h3>Books</h3>
+                <a href="#">Explore Now</a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TRENDING PRODUCTS -->
+    <section class="section">
+
+        <h2>Trending Products</h2>
+
+        <div class="product-grid">
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Headphones">
+                <h3>Wireless Headphones</h3>
+                <p class="rating">★★★★☆</p>
+                <h3>₹1,499</h3>
+                <p class="old-price">₹2,999</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Watch">
+                <h3>Smart Watch</h3>
+                <p class="rating">★★★★★</p>
+                <h3>₹2,499</h3>
+                <p class="old-price">₹4,999</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500" alt="Laptop">
+                <h3>Premium Laptop</h3>
+                <p class="rating">★★★★☆</p>
+                <h3>₹49,999</h3>
+                <p class="old-price">₹59,999</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="Phone">
+                <h3>Smartphone</h3>
+                <p class="rating">★★★★★</p>
+                <h3>₹19,999</h3>
+                <p class="old-price">₹24,999</p>
+                <button>Add to Cart</button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROMOTIONAL BANNER -->
+    <section class="offer-banner">
+
+        <div>
+            <h2>Upgrade Your Lifestyle!</h2>
+            <p>Get exciting offers on selected electronics.</p>
+        </div>
+
+        <button>Explore Deals</button>
+
+    </section>
+
+
+    <!-- MORE PRODUCTS -->
+    <section class="section">
+
+        <h2>Recommended For You</h2>
+
+        <div class="product-grid">
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Shoes">
+                <h3>Running Shoes</h3>
+                <p class="rating">★★★★★</p>
+                <h3>₹1,999</h3>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1503602642458-232111445657?w=500" alt="Chair">
+                <h3>Modern Chair</h3>
+                <p class="rating">★★★★☆</p>
+                <h3>₹3,499</h3>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500" alt="Camera">
+                <h3>Digital Camera</h3>
+                <p class="rating">★★★★★</p>
+                <h3>₹29,999</h3>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500" alt="T-shirt">
+                <h3>Casual T-Shirt</h3>
+                <p class="rating">★★★★☆</p>
+                <h3>₹799</h3>
+                <button>Add to Cart</button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BACK TO TOP -->
+    <a href="#" class="back-top">
+        Back to Top ↑
+    </a>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>Get to Know Us</h3>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Press Releases</a>
+                <a href="#">Our Stories</a>
+            </div>
+
+            <div>
+                <h3>Connect With Us</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+            </div>
+
+            <div>
+                <h3>Make Money With Us</h3>
+                <a href="#">Sell Products</a>
+                <a href="#">Affiliate Program</a>
+                <a href="#">Advertise Products</a>
+                <a href="#">Become a Partner</a>
+            </div>
+
+            <div>
+                <h3>Let Us Help You</h3>
+                <a href="#">Your Account</a>
+                <a href="#">Returns Centre</a>
+                <a href="#">Shipping Information</a>
+                <a href="#">Help Centre</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <h2>ShopZone</h2>
+
+            <p>© 2026 ShopZone. All Rights Reserved.</p>
+
+            <p>Made with ❤️ for Shopping Lovers</p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopZone - Online Shopping</title>
+
+    <style>
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #eaeded;
+    color: #222;
+}
+
+
+/* MAIN NAVBAR */
+
+.navbar {
+    background: #131921;
+    color: white;
+
+    display: grid;
+
+    grid-template-columns: 120px 100px 1fr 120px 100px 80px;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 25px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff9900;
+}
+
+.location small,
+.account small,
+.orders small {
+    color: #ddd;
+    font-size: 11px;
+}
+
+.search {
+    display: grid;
+    grid-template-columns: 60px 1fr 50px;
+    height: 42px;
+}
+
+.search select,
+.search input,
+.search button {
+    border: none;
+    padding: 10px;
+}
+
+.search input {
+    min-width: 0;
+    font-size: 15px;
+}
+
+.search button {
+    background: #febd69;
+    cursor: pointer;
+}
+
+.cart {
+    font-weight: bold;
+}
+
+
+/* SUB NAVBAR */
+
+.sub-navbar {
+    background: #232f3e;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    padding: 15px 25px;
+}
+
+.sub-navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 350px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.8),
+            rgba(0,0,0,0.1)
+        ),
+        url("https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1600")
+        center/cover;
+
+    display: grid;
+    align-items: center;
+
+    padding: 50px;
+    color: white;
+}
+
+.hero-content {
+    max-width: 550px;
+}
+
+.hero h1 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+button {
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.hero button {
+    background: #ff9900;
+    font-weight: bold;
+}
+
+
+/* COMMON SECTION */
+
+.section {
+    margin: 25px;
+    padding: 25px;
+    background: white;
+}
+
+.section h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+
+/* CATEGORY GRID */
+
+.category-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.category-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.category-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.category-card h3 {
+    margin: 15px 0;
+}
+
+.category-card a {
+    color: #007185;
+    text-decoration: none;
+}
+
+
+/* PRODUCT GRID */
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+}
+
+.rating {
+    color: #ff9900;
+    margin: 8px 0;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.product-card button {
+    background: #ffd814;
+    margin-top: 15px;
+    width: 100%;
+}
+
+
+/* OFFER BANNER */
+
+.offer-banner {
+    background: #232f3e;
+    color: white;
+
+    padding: 35px;
+
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    align-items: center;
+
+    margin: 25px;
+}
+
+.offer-banner button {
+    background: #ff9900;
+    font-weight: bold;
+}
+
+
+/* BACK TO TOP */
+
+.back-top {
+    display: block;
+    background: #37475a;
+    color: white;
+
+    text-align: center;
+
+    padding: 18px;
+
+    text-decoration: none;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #131a22;
+    color: white;
+}
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 30px;
+
+    padding: 50px;
+}
+
+.footer-grid h3 {
+    margin-bottom: 20px;
+}
+
+.footer-grid a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.footer-grid a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    border-top: 1px solid #555;
+
+    text-align: center;
+
+    padding: 30px;
+
+    line-height: 2;
+}
+
+.footer-bottom h2 {
+    color: #ff9900;
+}
+
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .search {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .category-grid,
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 0;
+    }
+
+    .navbar {
+        grid-template-columns: 1fr 1fr;
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .sub-navbar {
+        gap: 15px;
+        padding: 12px;
+    }
+
+    .sub-navbar a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 280px;
+        padding: 25px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .section {
+        margin: 12px;
+        padding: 15px;
+    }
+
+    .category-grid,
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .category-card img,
+    .product-card img {
+        height: 120px;
+    }
+
+    .offer-banner {
+        margin: 12px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        padding: 25px;
+        gap: 25px;
+    }
+
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- MAIN HEADER -->
+    <header class="navbar">
+
+        <div class="logo">
+            ShopZone
+        </div>
+
+        <div class="location">
+            <small>Deliver to</small>
+            <h4>India</h4>
+        </div>
+
+        <div class="search">
+            <select>
+                <option>All</option>
+                <option>Electronics</option>
+                <option>Fashion</option>
+                <option>Home</option>
+            </select>
+
+            <input type="text" placeholder="Search ShopZone">
+
+            <button>🔍</button>
+        </div>
+
+        <div class="account">
+            <small>Hello, Sign in</small>
+            <h4>Account</h4>
+        </div>
+
+        <div class="orders">
+            <small>Returns</small>
+            <h4>& Orders</h4>
+        </div>
+
+        <div class="cart">
+            🛒 Cart
+        </div>
+
+    </header>
+
+
+    <!-- CATEGORY NAVBAR -->
+    <nav class="sub-navbar">
+
+        <a href="#">☰ All</a>
+        <a href="#">Today's Deals</a>
+        <a href="#">Mobiles</a>
+        <a href="#">Electronics</a>
+        <a href="#">Fashion</a>
+        <a href="#">Home & Kitchen</a>
+        <a href="#">Books</a>
+        <a href="#">Customer Service</a>
+
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-content">
+            <h1>Big Shopping Festival</h1>
+
+            <p>Discover amazing deals on your favourite products.</p>
+
+            <button>Shop Now</button>
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORY SECTION -->
+    <section class="section">
+
+        <h2>Shop By Category</h2>
+
+        <div class="category-grid">
+
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500" alt="Electronics">
+                <h3>Electronics</h3>
+                <a href="#">Explore Now</a>
+            </div>
+
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500" alt="Fashion">
+                <h3>Fashion</h3>
+                <a href="#">Explore Now</a>
+            </div>
+
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500" alt="Home">
+                <h3>Home & Furniture</h3>
+                <a href="#">Explore Now</a>
+            </div>
+
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500" alt="Books">
+                <h3>Books</h3>
+                <a href="#">Explore Now</a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TRENDING PRODUCTS -->
+    <section class="section">
+
+        <h2>Trending Products</h2>
+
+        <div class="product-grid">
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Headphones">
+                <h3>Wireless Headphones</h3>
+                <p class="rating">★★★★☆</p>
+                <h3>₹1,499</h3>
+                <p class="old-price">₹2,999</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Watch">
+                <h3>Smart Watch</h3>
+                <p class="rating">★★★★★</p>
+                <h3>₹2,499</h3>
+                <p class="old-price">₹4,999</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500" alt="Laptop">
+                <h3>Premium Laptop</h3>
+                <p class="rating">★★★★☆</p>
+                <h3>₹49,999</h3>
+                <p class="old-price">₹59,999</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="Phone">
+                <h3>Smartphone</h3>
+                <p class="rating">★★★★★</p>
+                <h3>₹19,999</h3>
+                <p class="old-price">₹24,999</p>
+                <button>Add to Cart</button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROMOTIONAL BANNER -->
+    <section class="offer-banner">
+
+        <div>
+            <h2>Upgrade Your Lifestyle!</h2>
+            <p>Get exciting offers on selected electronics.</p>
+        </div>
+
+        <button>Explore Deals</button>
+
+    </section>
+
+
+    <!-- MORE PRODUCTS -->
+    <section class="section">
+
+        <h2>Recommended For You</h2>
+
+        <div class="product-grid">
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Shoes">
+                <h3>Running Shoes</h3>
+                <p class="rating">★★★★★</p>
+                <h3>₹1,999</h3>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1503602642458-232111445657?w=500" alt="Chair">
+                <h3>Modern Chair</h3>
+                <p class="rating">★★★★☆</p>
+                <h3>₹3,499</h3>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500" alt="Camera">
+                <h3>Digital Camera</h3>
+                <p class="rating">★★★★★</p>
+                <h3>₹29,999</h3>
+                <button>Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500" alt="T-shirt">
+                <h3>Casual T-Shirt</h3>
+                <p class="rating">★★★★☆</p>
+                <h3>₹799</h3>
+                <button>Add to Cart</button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BACK TO TOP -->
+    <a href="#" class="back-top">
+        Back to Top ↑
+    </a>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>Get to Know Us</h3>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Press Releases</a>
+                <a href="#">Our Stories</a>
+            </div>
+
+            <div>
+                <h3>Connect With Us</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+            </div>
+
+            <div>
+                <h3>Make Money With Us</h3>
+                <a href="#">Sell Products</a>
+                <a href="#">Affiliate Program</a>
+                <a href="#">Advertise Products</a>
+                <a href="#">Become a Partner</a>
+            </div>
+
+            <div>
+                <h3>Let Us Help You</h3>
+                <a href="#">Your Account</a>
+                <a href="#">Returns Centre</a>
+                <a href="#">Shipping Information</a>
+                <a href="#">Help Centre</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <h2>ShopZone</h2>
+
+            <p>© 2026 ShopZone. All Rights Reserved.</p>
+
+            <p>Made with ❤️ for Shopping Lovers</p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
